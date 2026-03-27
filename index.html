@@ -3,11 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mini CRM Project Manager</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Mini CRM</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        form { margin-bottom: 20px; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; }
+        .form-group input, .form-group select { padding: 10px; width: 100%; }
+        button { padding: 10px 15px; }
+    </style>
 </head>
 <body>
-    <h1>Welcome to the Mini CRM Project Manager</h1>
-    <p>Current Date and Time (UTC): 2026-03-27 18:10:31</p>
-    <p>Current User's Login: jbg2sales</p>
+    <h1>Mini CRM</h1>
+    <form id="clientForm">
+        <div class="form-group">
+            <label for="clientName">Client Name:</label>
+            <input type="text" id="clientName" required>
+        </div>
+        <div class="form-group">
+            <label for="projectName">Project Name:</label>
+            <input type="text" id="projectName" required>
+        </div>
+        <div class="form-group">
+            <label for="status">Status:</label>
+            <select id="status" required>
+                <option value="Active">Active</option>
+                <option value="Completed">Completed</option>
+                <option value="On Hold">On Hold</option>
+            </select>
+        </div>
+        <button type="submit">Add Client/Project</button>
+    </form>
+    <h2>Clients/Projects List</h2>
+    <ul id="clientList"></ul>
+    <script>
+        const form = document.getElementById('clientForm');
+        const clientList = document.getElementById('clientList');
+        const clients = [];
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const clientName = document.getElementById('clientName').value;
+            const projectName = document.getElementById('projectName').value;
+            const status = document.getElementById('status').value;
+            clients.push({ clientName, projectName, status });
+            updateClientList();
+            form.reset();
+        });
+
+        function updateClientList() {
+            clientList.innerHTML = '';
+            clients.forEach(client => {
+                const li = document.createElement('li');
+                li.textContent = `${client.clientName} - ${client.projectName} (${client.status})`;
+                clientList.appendChild(li);
+            });
+        }
+    </script>
 </body>
 </html>
