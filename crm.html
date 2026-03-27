@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM System</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .tab { display: none; }
+        .active { display: block; }
+        .tabs { margin: 20px 0; }
+        .tab-button { cursor: pointer; padding: 10px; background-color: #007BFF; color: white; border: none; }
+        .tab-button:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+    <h1>Professional CRM System</h1>
+    <div class="tabs">
+        <button class="tab-button" onclick="showTab('clients')">Clients</button>
+        <button class="tab-button" onclick="showTab('projects')">Projects</button>
+        <button class="tab-button" onclick="showTab('invoices')">Invoices</button>
+        <button class="tab-button" onclick="showTab('documents')">Documents</button>
+        <button class="tab-button" onclick="showTab('configuration')">Configuration</button>
+    </div>
+
+    <div id="clients" class="tab active">
+        <h2>Client Management</h2>
+        <p>Manage your clients here.</p>
+        <!-- Client management features like adding, editing, and deleting clients will be implemented here -->
+    </div>
+
+    <div id="projects" class="tab">
+        <h2>Project Management</h2>
+        <p>Manage your projects here.</p>
+        <!-- Project management features will be implemented here -->
+    </div>
+
+    <div id="invoices" class="tab">
+        <h2>Invoice Generation</h2>
+        <p>Generate invoices here.</p>
+        <!-- Invoice generation features will be implemented here -->
+    </div>
+
+    <div id="documents" class="tab">
+        <h2>Document Editor</h2>
+        <textarea rows="10" cols="50" placeholder="Edit documents here..."></textarea><br />
+        <button onclick="copyText()">Copy</button>
+        <p>Document editing features will be implemented here.</p>
+    </div>
+
+    <div id="configuration" class="tab">
+        <h2>Configuration</h2>
+        <p>Configure your CRM here.</p>
+        <!-- Configuration features will be implemented here -->
+    </div>
+
+    <script>
+        function showTab(tabName) {
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => { tab.classList.remove('active'); });
+            document.getElementById(tabName).classList.add('active');
+        }
+
+        function copyText() {
+            const textarea = document.querySelector('textarea');
+            textarea.select();
+            document.execCommand('copy');
+            alert('Text copied to clipboard!');
+        }
+    </script>
+</body>
+</html>
