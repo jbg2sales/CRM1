@@ -3,70 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRM System</title>
-    <style>
-        body { font-family: Arial, sans-serif; }
-        .tab { display: none; }
-        .active { display: block; }
-        .tabs { margin: 20px 0; }
-        .tab-button { cursor: pointer; padding: 10px; background-color: #007BFF; color: white; border: none; }
-        .tab-button:hover { background-color: #0056b3; }
-    </style>
+    <title>Professional CRM System</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Professional CRM System</h1>
-    <div class="tabs">
-        <button class="tab-button" onclick="showTab('clients')">Clients</button>
-        <button class="tab-button" onclick="showTab('projects')">Projects</button>
-        <button class="tab-button" onclick="showTab('invoices')">Invoices</button>
-        <button class="tab-button" onclick="showTab('documents')">Documents</button>
-        <button class="tab-button" onclick="showTab('configuration')">Configuration</button>
-    </div>
-
-    <div id="clients" class="tab active">
-        <h2>Client Management</h2>
-        <p>Manage your clients here.</p>
-        <!-- Client management features like adding, editing, and deleting clients will be implemented here -->
-    </div>
-
-    <div id="projects" class="tab">
-        <h2>Project Management</h2>
-        <p>Manage your projects here.</p>
-        <!-- Project management features will be implemented here -->
-    </div>
-
-    <div id="invoices" class="tab">
-        <h2>Invoice Generation</h2>
-        <p>Generate invoices here.</p>
-        <!-- Invoice generation features will be implemented here -->
-    </div>
-
-    <div id="documents" class="tab">
-        <h2>Document Editor</h2>
-        <textarea rows="10" cols="50" placeholder="Edit documents here..."></textarea><br />
-        <button onclick="copyText()">Copy</button>
-        <p>Document editing features will be implemented here.</p>
-    </div>
-
-    <div id="configuration" class="tab">
-        <h2>Configuration</h2>
-        <p>Configure your CRM here.</p>
-        <!-- Configuration features will be implemented here -->
-    </div>
-
-    <script>
-        function showTab(tabName) {
-            const tabs = document.querySelectorAll('.tab');
-            tabs.forEach(tab => { tab.classList.remove('active'); });
-            document.getElementById(tabName).classList.add('active');
-        }
-
-        function copyText() {
-            const textarea = document.querySelector('textarea');
-            textarea.select();
-            document.execCommand('copy');
-            alert('Text copied to clipboard!');
-        }
-    </script>
+    <header>
+        <h1>Client Management CRM</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#addClient">Add Client</a></li>
+            <li><a href="#editClient">Edit Client</a></li>
+            <li><a href="#deleteClient">Delete Client</a></li>
+            <li><a href="#projectStatus">Project Status Tracking</a></li>
+            <li><a href="#integration">Email and SMS Integration</a></li>
+            <li><a href="#invoiceManagement">Invoice Management</a></li>
+            <li><a href="#documentProposals">Document Proposals</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="addClient">
+            <h2>Add Client</h2>
+            <form>
+                <label for="clientName">Client Name:</label>
+                <input type="text" id="clientName" name="clientName" required>
+                <input type="submit" value="Add Client">
+            </form>
+        </section>
+        <section id="editClient">
+            <h2>Edit Client</h2>
+            <form>
+                <label for="editClientId">Client ID:</label>
+                <input type="text" id="editClientId" name="editClientId" required>
+                <label for="editClientName">New Client Name:</label>
+                <input type="text" id="editClientName" name="editClientName" required>
+                <input type="submit" value="Update Client">
+            </form>
+        </section>
+        <section id="deleteClient">
+            <h2>Delete Client</h2>
+            <form>
+                <label for="deleteClientId">Client ID:</label>
+                <input type="text" id="deleteClientId" name="deleteClientId" required>
+                <input type="submit" value="Delete Client">
+            </form>
+        </section>
+        <section id="projectStatus">
+            <h2>Project Status Tracking</h2>
+            <ul>
+                <li>Active</li>
+                <li>In Production</li>
+                <li>Completed</li>
+            </ul>
+        </section>
+        <section id="integration">
+            <h2>Email and SMS Integration</h2>
+            <p>Integrate with email and SMS services for notifications.</p>
+        </section>
+        <section id="invoiceManagement">
+            <h2>Invoice Management</h2>
+            <form>
+                <label for="invoiceId">Invoice ID:</label>
+                <input type="text" id="invoiceId" name="invoiceId" required>
+                <input type="submit" value="Manage Invoice">
+            </form>
+        </section>
+        <section id="documentProposals">
+            <h2>Document Proposals</h2>
+            <form>
+                <label for="proposalDocument">Upload Proposal (PDF):</label>
+                <input type="file" id="proposalDocument" name="proposalDocument" accept="application/pdf">
+                <input type="submit" value="Upload Proposal">
+            </form>
+            <p>Electronically sign proposals for submission.</p>
+        </section>
+    </main>
+    <footer>
+        <p>CRM System © 2026</p>
+    </footer>
 </body>
 </html>
